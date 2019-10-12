@@ -1,0 +1,48 @@
+Developer Flow:
+    6.1 Build           
+    6.2 Compile
+    6.3 Junit Test  
+    6.4 Code Quality using SonarQube 
+    6.5 Package the code to .war or .jar 
+    6.6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    6.7 Deploy the Snapshot to Development environment 
+    6.8 Validate the Build and Deployment 
+
+QA Team Flow:
+    6.9 Based on Development environment feedback trigger the QA Build Job from Jenkins
+    6.10 Repeat the Step 6.1 to 6.8 
+    6.11 Write the test cases
+    6.12 Perform the Manual and Automation testing 
+    6.13 If there are any bugs then create a Bug in Jira & Notify the developers 
+    6.14 Based on the QA bugs developers are going to fix the bugs and release the new version 
+    snapshot and Repeat the steps from 6.1 to 6.8
+    6.15 Again QA Performs steps from 6.1 to 6.7 by triggering the Jenkins Job and Perform the 
+    Manual and Automation testing 
+    6.16 If there are no Bugs then, QA team will update the OPS team to deploy the new Build on 
+    Acceptance environment
+
+OPS Team Flow:
+    6.17 Based on QA team OPS team is going to Trigger a Jenkins Job from Artifactory 
+    i.e. libs-release-local folder to deploy the job into Acceptance environment 
+    6.18 OPS team will Perform Manual or Automation testing and they will ask business to 
+    validate the new features based on their request.
+    6.18 Based on Business confirmation, OPS team is going to trigger a Jenkins job from 
+    Artifactory i.e. libs-release-local folder to deploy the job into Production environment 
+    6.19 OPS team will Perform Manual or Automation testing and they will update the results 
+    with Business, QA, & Developers accordingly.
+
+New Requirement from Business to DevOps team flow:
+    6.20 Again Business is going to come-up with new requirement and they will share the 
+    insights with Product Owner
+    6.21 Product Owner is going to prioritize the Business requirement and creates Product Backlogs
+    6.22 Product Owner is going to share the Product Backlogs with Scrum Master 
+    6.23 Scrum Master is going to look at the Product Backlogs and creates the sprint backlogs 
+    in his Project
+    6.24 Part of Agile Scrum Rituals(I.e. Backlogs Refinement) Scrum Master is going to discuss 
+    with DevOps team accordingly
+    6.25 Based on each backlog he will take the insights from DevOps team and update the backlogs
+     on Definition of Ready(DoR) & Definition of Don(DoD) Number of Story Points, etc...
+    6.26 Based on Sprint Backlogs Refinement Scrum Master will update Product Owner about each 
+    Product backlogs
+    6.27 According to the Agile Scrum Rituals Scrum master is going to start new sprint with 
+    latest backlogs by completing the current sprint 

@@ -1,0 +1,30 @@
+
+
+DevOps Engineer:
+
+1. SDLC - Agile 
+
+2. Operating Systems - 1. System Administration 
+                       2. Network Administration 
+
+3. Programming - Java, .net , NodeJs, Python etc .
+
+4. Cloud - AWS, AZURE, GCP etc...
+
+5. DevOps Tool Chain -
+
+5.1. Download, Install and Configure 
+    DevOps Tool Chain :
+    4.0 Jira / Trello       - Continuous Planning 
+    4.1 Git & GitHub/GitLab - Continuous Collabration and Version Control System 
+    4.2 Java Project   
+    4.3 Maven               - Build Tool 
+    4.4 JUnit               - Continuous Unit Testing 
+SonarQube           - Continuous Code Quality
+    4.6 Jenkins             - Continuous Integration
+Jfrog Artifactory   - Continuous Binary Code Repository
+    4.8 Tomcat              - Application Server 
+    4.9 Ansible, Puppet             - Configuration Management Tool 
+    4.10 Docker             - Containerization 
+    4.11 Kubernetes         - Container Orchestration 
+    4.12 Nagios             - Continuous Monitoring Tool
