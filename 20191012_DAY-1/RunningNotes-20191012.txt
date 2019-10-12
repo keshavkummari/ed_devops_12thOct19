@@ -1,0 +1,8 @@
+Agenda :
+
+1. What is DevOps?
+2. Why DevOps?
+3. Pre for DevOps engineer?
+4. DevOps CI/CD Pipeline tools
+5. Course OVerview 
+6. Version Control System (git and github.com)

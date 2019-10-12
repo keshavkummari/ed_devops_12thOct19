@@ -1,0 +1,30 @@
+
+
+Basic info about Trainer system :
+
+OS : MacOS & Windows-10 
+
+    - Text Editors / IDE : Notepadd++, ATOM, Visual Studio Code, Eclipse, Pycharm ,
+        
+        1. Visual Studio Code     (Text Editor)
+        2. STS Spring Tool Suite  (Java Code)
+
+    - Version Control System Tools : 
+        1. Github
+        2. Gitlab 
+        3. BitBucket
+
+        - Software : git (https://git-scm.com)
+
+    - Browsers :
+        - Chrome
+        - Safari 
+        - IE or Edge 
+    
+    - Draw or Explain a Topic : 
+        ms-paint 
+
+    - Architecture Design :
+        cloudcraft 
+    
+    
