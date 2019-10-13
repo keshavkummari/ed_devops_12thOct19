@@ -1,0 +1,183 @@
+
+pwKeshavs-MacBook-Pro:~ keshavkummari$ pwd
+/Users/keshavkummari
+Keshavs-MacBook-Pro:~ keshavkummari$ cd Downloads/
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ls -lrt edu_aws.pem 
+-rw-r--r--@ 1 keshavkummari  staff  1692 Oct 13 08:04 edu_aws.pem
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ chmod 400 edu_aws.pem
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ls -lrt edu_aws.pem 
+-r--------@ 1 keshavkummari  staff  1692 Oct 13 08:04 edu_aws.pem
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "edu_aws.pem" ubuntu@ec2-13-235-134-185.ap-south-1.compute.amazonaws.com
+
+ubuntu@ip-172-31-27-240:~$ uname -a
+Linux ip-172-31-27-240 4.15.0-1051-aws #53-Ubuntu SMP Wed Sep 18 13:35:53 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ cat /etc/issue
+Ubuntu 18.04.3 LTS \n \l
+
+ubuntu@ip-172-31-27-240:~$ git --version
+git version 2.17.1
+ubuntu@ip-172-31-27-240:~$ # sudo apt-get update
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ # sudo apt-get install git 
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ git --version
+git version 2.17.1
+
+
+
+ubuntu@ip-172-31-27-240:~$ git --version
+git version 2.17.1
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ ssh-keygen -t rsa -b 4096 -C "keshav.kummari@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/ubuntu/.ssh/id_rsa.
+Your public key has been saved in /home/ubuntu/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:rFBt6Ty0kqryg90t29gWodDDhOZ6egQuJz6QHKQG9rY keshav.kummari@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|   .             |
+|.oo .  . .       |
+|=o.+  . =        |
+|oooo+..B .       |
+|++o.ooo.S        |
+|*o+E.o.o .       |
+|+O .....         |
+|+o+.o+o          |
+| ++.o+o          |
++----[SHA256]-----+
+ubuntu@ip-172-31-27-240:~$ ls -lrt /home/ubuntu/.ssh/
+total 12
+-rw------- 1 ubuntu ubuntu  389 Oct 13 02:34 authorized_keys
+-rw-r--r-- 1 ubuntu ubuntu  750 Oct 13 03:19 id_rsa.pub
+-rw------- 1 ubuntu ubuntu 3243 Oct 13 03:19 id_rsa
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ cat /home/ubuntu/.ssh/id_rsa.pub
+
+
+ubuntu@ip-172-31-27-240:~$ eval "$(ssh-agent -s)"
+Agent pid 1838
+ubuntu@ip-172-31-27-240:~$ ssh-add -k ~/.ssh/id_rsa
+Identity added: /home/ubuntu/.ssh/id_rsa (/home/ubuntu/.ssh/id_rsa)
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ ssh -T git@github.com
+The authenticity of host 'github.com (13.234.176.102)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,13.234.176.102' (RSA) to the list of known hosts.
+Hi keshavkummari! You've successfully authenticated, but GitHub does not provide shell access.
+ubuntu@ip-172-31-27-240:~$
+
+
+   21  git clone https://github.com/keshavkummari/eduJavaProject.git
+   22  ls -lrta
+   23  pwd
+   24  ls -lrt
+   25  ls -lrta eduJavaProject/
+   26  cd eduJavaProject/
+   27  pwd
+   28  ls -lrta
+   29  git status
+   30  git branch
+   31  cd ../
+   32  pwd
+   33  cd ../
+   34  cd -
+   35  pwd
+   36  cd /tmp
+   37  pwd
+   38  ls -lrt
+
+Download the Java Project and Upload to new repository i.e. eduJavaProject.git
+   39  git clone https://github.com/keshavkummari/devops.git
+   40  ls -lrt
+   41  cd devops/
+   42  ls -lrta
+   43  cp -pvr * /home/ubuntu/eduJavaProject/
+   44  cd 
+   45  pwd
+   46  ls -lrt
+   47  cd eduJavaProject/
+   48  ls -lrta
+   49  git status
+   50  git add . 
+   51  git status
+   52  git commit -m "Sample Java Project"
+   53  git status
+   54  git push -u origin master
+   55  history
+
+
+
+Java :
+
+ubuntu@ip-172-31-27-240:~$ sudo cp -pv /etc/environment /etc/environment_20191013 
+'/etc/environment' -> '/etc/environment_20191013'
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment_20191013
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@ip-172-31-27-240:~$ sudo vi /etc/environment
+
+[No write since last change]
+/home/ubuntu
+
+Press ENTER or type command to continue
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ source /etc/environment
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+
+
+Maven :
+
+ubuntu@ip-172-31-27-240:~$ ls -lrt /usr/share/maven
+total 16
+lrwxrwxrwx 1 root root   10 Apr  9  2019 conf -> /etc/maven
+drwxr-xr-x 2 root root 4096 Oct 13 03:57 man
+drwxr-xr-x 2 root root 4096 Oct 13 03:57 lib
+drwxr-xr-x 2 root root 4096 Oct 13 03:57 boot
+drwxr-xr-x 2 root root 4096 Oct 13 03:57 bin
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ sudo vi /etc/environment
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+# Maven Home Path
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ source /etc/environment
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1051-aws", arch: "amd64", family: "unix"
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@ip-172-31-27-240:~$ 
+ubuntu@ip-172-31-27-240:~$ echo $M2
+/usr/share/maven/bin

@@ -1,0 +1,95 @@
+
+Agenda :
+
+Developer Flow:
+    6.1 Build           
+    6.2 Compile
+    6.3 Junit Test  
+    6.4 Code Quality using SonarQube 
+    6.5 Package the code to .war or .jar 
+    6.6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    6.7 Deploy the Snapshot to Development environment 
+    6.8 Validate the Build and Deployment 
+
+
+Idea to Production :
+
+WebApplication - Java 
+
+Step-1 : Plan (Agile Scrum Framework)
+            Tool : Jira & Trello 
+Idea(WebApplication) to Production(Live) 
+
+SDLC : Agile + DevOps
+
+Scrum Rituals :
+   1. Sprint 
+       - Sprint Planning 
+       - Daily Scrum (Mon-Fri @ 15days)
+       - Refine (If the Story is not clear and that need to be refined)
+       - Review (About How Sprint is progressing etc..)
+       - Retro 
+       - End the Sprint (End the Sprint)
+       - Start Sprint-2
+       - 2 Weeks 
+   2. Basic WebApplication 
+
+Agile + DevOps :
+1. PO,
+2. SM, & 
+3. DevOps (Dev, QA, SysAdmin, DB Admin, Ops, Business etc...) 
+
+STEP-1 : Create a Java Project with Maven Build Tool dependency 
+
+https://start.spring.io/
+
+STEP-2 : Import Java Project in IDE tools i.e. STS, Eclipse
+
+STEP-2.1 : Versionize the Java Project & Collabrate with other developers 
+
+    1. git software (https://git-scm.com)
+    $ git --version
+    git version 2.22.0
+
+    2. Create an Account with github.com 
+    UserName : 
+    PassWord : 
+
+STEP-3 : Start Coding 
+
+    1. Server Side Coding : Java 
+    2. Client Side Coding : HTML, CSS, JS etc... 
+    3. Integrations       : Database, 3rd Party API's using XML files 
+
+STEP-4 : Developer Flow:
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Code Quality using SonarQube 
+    5 Package the code to .war or .jar 
+    6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    7 Deploy the Snapshot to Development environment 
+    8 Validate the Build and Deployment 
+
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war 
+
+    Next Week: 
+    6. Download, Install and Configure Application Server i.e. Apache Tomcat 
+    7. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment 
+
+
+STEP-5 : Our Project is Java and Maven 
+
+Ubuntu Instance :
+
+Download, Install and Configure :
+
+    1. Java 1.8 
+    2. Maven 3.5.4 (https://www.mkyong.com/maven/how-to-install-maven-in-windows/)
+
+    https://maven.apache.org/install.html
+
