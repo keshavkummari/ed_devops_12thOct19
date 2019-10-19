@@ -1,0 +1,62 @@
+
+Summary :
+
+ubuntu@jenkins:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1051-aws", arch: "amd64", family: "unix"
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@jenkins:~$ echo $M2
+/usr/share/maven/bin
+ubuntu@jenkins:~$
+
+
+Download required software:
+
+    1. Home path    :  /var/lib/jenkins
+    2. User         :  sudo grep 'jenkins' /etc/passwd /etc/shadow 
+    3. Group        :  sudo grep 'jenkins' /etc/group /etc/gshadow
+    4. Deamon/Service : jenkins.service
+    5. Configuration : ls -lrt /etc/default/jenkins
+
+ubuntu@jenkins:~$ ps -aux | grep jenkins
+
+jenkins  19541  0.0  0.0  20844   196 ?        S    02:25   0:00 
+
+/usr/bin/daemon --name=jenkins --inherit --env=JENKINS_HOME=/var/lib/jenkin 
+--output=/var/log/jenkins/jenkins.log 
+--pidfile=/var/run/jenkins/jenkins.pid 
+-- /usr/bin/java -Djava.awt.headless=true -jar /usr/share/jenkins/jenkins.war 
+--webroot=/var/cache/jenkins/war 
+--httpPort=8080
+
+
+    2  cat /var/log/jenkins/jenkins.log 
+    3  sudo systemctl status jenkins.service
+    4  sudo systemctl stop jenkins.service
+    5  sudo systemctl status jenkins.service
+    6  ps -aux | grep jenkins
+    7  sudo systemctl start jenkins.service
+    8  sudo systemctl status jenkins.service
+    9  ps -aux | grep jenkins
+
+Go to Jenkins >> Manage Jenkins >> Manage Plugins >> Under Available add below mentioned plugins:
+
+Jenkins Plugins :
+1. Conditional Buildstep
+2. Deploy to container 
+3. Environment Injector
+4. Git Parameter 
+5. GitHub Branch Source

@@ -1,0 +1,38 @@
+sudo apt install maven
+
+ubuntu@jenkins:~$ ls -lrt /usr/share/maven
+total 16
+lrwxrwxrwx 1 root root   10 Apr  9  2019 conf -> /etc/maven
+drwxr-xr-x 2 root root 4096 Oct 19 02:08 man
+drwxr-xr-x 2 root root 4096 Oct 19 02:08 lib
+drwxr-xr-x 2 root root 4096 Oct 19 02:08 boot
+drwxr-xr-x 2 root root 4096 Oct 19 02:08 bin
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ sudo cp -pv /etc/environment /etc/environment_20191019_V1
+'/etc/environment' -> '/etc/environment_20191019_V1'
+ubuntu@jenkins:~$ sudo vi /etc/environment
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+# Maven Home Path 
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ source /etc/environment
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1051-aws", arch: "amd64", family: "unix"
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ echo $M2
+/usr/share/maven/bin

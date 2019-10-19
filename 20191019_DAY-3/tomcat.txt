@@ -1,0 +1,28 @@
+wget http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
+   71  ls -lrt
+   72  tar xvzf apache-tomcat-8.5.47.tar.gz 
+   73  ls -lrt
+   74  sudo mv apache-tomcat-8.5.47 /opt/tomcat
+   75  ls -lrt 
+   76  ls -lrt /opt/
+   77  cd /opt/tomcat/
+   78  pwd
+   79  ls -lrt
+   80  cd bin/
+   81  ls -lrt
+   82  cd ../
+   83  pwd
+   84  ls -lrt
+   85  cd conf/
+   86  ls -lrt
+   87  sudo vi server.xml 
+
+
+root@jenkins:/opt/tomcat/bin# history
+    1  cd
+    2  exit
+    3  pwd
+    4  ls -lrt
+    5  ./startup.sh 
+    6  ps -aux | grep tomcat
+    7  history

@@ -1,0 +1,38 @@
+
+sudo apt install openjdk-8-jdk
+
+ubuntu@jenkins:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+total 20
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 src.zip -> ../openjdk-8/src.zip
+lrwxrwxrwx 1 root root   41 Jul 18 18:52 docs -> ../../../share/doc/openjdk-8-jre-headless
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 THIRD_PARTY_README -> jre/THIRD_PARTY_README
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 ASSEMBLY_EXCEPTION -> jre/ASSEMBLY_EXCEPTION
+drwxr-xr-x 4 root root 4096 Oct 19 02:00 man
+drwxr-xr-x 5 root root 4096 Oct 19 02:00 jre
+drwxr-xr-x 3 root root 4096 Oct 19 02:00 lib
+drwxr-xr-x 3 root root 4096 Oct 19 02:00 include
+drwxr-xr-x 2 root root 4096 Oct 19 02:00 bin
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ sudo cp -pv /etc/environment /etc/environment_20191019
+'/etc/environment' -> '/etc/environment_20191019'
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ sudo vi /etc/environment
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+ubuntu@jenkins:~$ source /etc/environment
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@jenkins:~$ 
+ubuntu@jenkins:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
