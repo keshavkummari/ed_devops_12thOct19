@@ -1,0 +1,52 @@
+ubuntu@tomcat:~$ # sudo apt update 
+
+ubuntu@tomcat:~$ # sudo apt list --upgradable
+
+ubuntu@tomcat:~$ sudo apt install openjdk-8-jdk
+
+
+ubuntu@tomcat:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /usr/lib/jvm/
+total 4
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 java-1.8.0-openjdk-amd64 -> java-8-openjdk-amd64
+drwxr-xr-x 7 root root 4096 Oct 20 01:59 java-8-openjdk-amd64
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+total 20
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 src.zip -> ../openjdk-8/src.zip
+lrwxrwxrwx 1 root root   41 Jul 18 18:52 docs -> ../../../share/doc/openjdk-8-jre-headless
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 THIRD_PARTY_README -> jre/THIRD_PARTY_README
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 ASSEMBLY_EXCEPTION -> jre/ASSEMBLY_EXCEPTION
+drwxr-xr-x 4 root root 4096 Oct 20 01:59 man
+drwxr-xr-x 5 root root 4096 Oct 20 01:59 jre
+drwxr-xr-x 3 root root 4096 Oct 20 01:59 lib
+drwxr-xr-x 3 root root 4096 Oct 20 01:59 include
+drwxr-xr-x 2 root root 4096 Oct 20 01:59 bin
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ cat /etc/environment 
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ sudo cp -pv /etc/environment /etc/environment_20191020
+'/etc/environment' -> '/etc/environment_20191020'
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment_20191020
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@tomcat:~$ sudo vi /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path Setup
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+ubuntu@tomcat:~$ source /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/

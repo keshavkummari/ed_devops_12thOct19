@@ -1,0 +1,19 @@
+
+
+We will launch Jfrog Artifactory :
+
+settings.xml 
+
+settings-security.xml 
+
+
+Maven : 
+
+mvn clean package deploy 
+
+/var/lib/jenkins/.m2/
+
+settings.xml 
+settings-security.xml 
+
+.war or .jar into Binary Code Repository i.e. Jfrog Artifactory

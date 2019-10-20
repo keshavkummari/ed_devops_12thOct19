@@ -26,3 +26,744 @@ root@jenkins:/opt/tomcat/bin# history
     5  ./startup.sh 
     6  ps -aux | grep tomcat
     7  history
+
+
+RunningNotes  - 20191020 
+
+ubuntu@ip-172-31-89-39:~$ hostname
+ip-172-31-89-39
+ubuntu@ip-172-31-89-39:~$ sudo hostnamectl set-hostname "tomcat.codewithckk.com"
+ubuntu@ip-172-31-89-39:~$ 
+ubuntu@ip-172-31-89-39:~$ /bin/bash
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.89.39  netmask 255.255.240.0  broadcast 172.31.95.255
+        inet6 fe80::10cd:76ff:fe33:26e  prefixlen 64  scopeid 0x20<link>
+        ether 12:cd:76:33:02:6e  txqueuelen 1000  (Ethernet)
+        RX packets 976  bytes 604927 (604.9 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 673  bytes 77024 (77.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 172  bytes 14020 (14.0 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 172  bytes 14020 (14.0 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@tomcat:~$ hostname
+tomcat.codewithckk.com
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@tomcat:~$ sudo vi /etc/hosts
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ sudo echo 172.31.89.39 tomcat.codewithckk.com >> /etc/hosts
+bash: /etc/hosts: Permission denied
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ sudo su
+root@tomcat:/home/ubuntu# 
+root@tomcat:/home/ubuntu# echo 172.31.89.39 tomcat.codewithckk.com >> /etc/hosts
+root@tomcat:/home/ubuntu# cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+172.31.89.39 tomcat.codewithckk.com
+root@tomcat:/home/ubuntu# exit
+exit
+ubuntu@tomcat:~$ 
+
+JAVA :
+
+
+ubuntu@tomcat:~$ # sudo apt update 
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ # sudo apt list --upgradable
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ sudo apt install openjdk-8-jdk
+
+ubuntu@tomcat:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /usr/lib/jvm/
+total 4
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 java-1.8.0-openjdk-amd64 -> java-8-openjdk-amd64
+drwxr-xr-x 7 root root 4096 Oct 20 01:59 java-8-openjdk-amd64
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+total 20
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 src.zip -> ../openjdk-8/src.zip
+lrwxrwxrwx 1 root root   41 Jul 18 18:52 docs -> ../../../share/doc/openjdk-8-jre-headless
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 THIRD_PARTY_README -> jre/THIRD_PARTY_README
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 ASSEMBLY_EXCEPTION -> jre/ASSEMBLY_EXCEPTION
+drwxr-xr-x 4 root root 4096 Oct 20 01:59 man
+drwxr-xr-x 5 root root 4096 Oct 20 01:59 jre
+drwxr-xr-x 3 root root 4096 Oct 20 01:59 lib
+drwxr-xr-x 3 root root 4096 Oct 20 01:59 include
+drwxr-xr-x 2 root root 4096 Oct 20 01:59 bin
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ cat /etc/environment 
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ sudo cp -pv /etc/environment /etc/environment_20191020
+'/etc/environment' -> '/etc/environment_20191020'
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment_20191020
+-rw-r--r-- 1 root root 96 Oct  2 17:09 /etc/environment
+ubuntu@tomcat:~$ sudo vi /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java Home Path Setup
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+ubuntu@tomcat:~$ source /etc/environment
+ubuntu@tomcat:~$ 
+ubuntu@tomcat:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+
+
+admin-gui - allows access to the HTML GUI
+admin-script - allows access to the text interface
+
+manager-gui - allows access to the HTML GUI and the status pages
+manager-script - allows access to the text interface and the status pages
+manager-jmx - allows access to the JMX proxy and the status pages
+manager-status - allows access to the status pages only
+
+admin-gui
+admin-script
+manager-gui
+manager-script
+manager-jmx
+manager-status
+
+admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status
+
+
+
+root@tomcat:/opt# ls -lrt
+total 10032
+-rw-r--r-- 1 root root 10267082 Oct  7 13:54 apache-tomcat-8.5.47.tar.gz
+drwxr-xr-x 9 root root     4096 Oct 20 02:06 apache-tomcat-8.5.47
+root@tomcat:/opt# 
+root@tomcat:/opt# mv apache-tomcat-8.5.47 tomcat
+root@tomcat:/opt# ls -lrt
+total 10032
+-rw-r--r-- 1 root root 10267082 Oct  7 13:54 apache-tomcat-8.5.47.tar.gz
+drwxr-xr-x 9 root root     4096 Oct 20 02:06 tomcat
+root@tomcat:/opt# cd tomcat/
+root@tomcat:/opt/tomcat# pwd
+/opt/tomcat
+root@tomcat:/opt/tomcat# ls -lrt
+total 144
+drwxr-x--- 2 root root  4096 Oct  7 13:30 work
+drwxr-x--- 2 root root  4096 Oct  7 13:30 logs
+drwxr-x--- 7 root root  4096 Oct  7 13:31 webapps
+-rw-r----- 1 root root  3255 Oct  7 13:33 README.md
+-rw-r----- 1 root root  1726 Oct  7 13:33 NOTICE
+-rw-r----- 1 root root 57011 Oct  7 13:33 LICENSE
+-rw-r----- 1 root root  5407 Oct  7 13:33 CONTRIBUTING.md
+-rw-r----- 1 root root 19318 Oct  7 13:33 BUILDING.txt
+drwx------ 2 root root  4096 Oct  7 13:33 conf
+-rw-r----- 1 root root 16262 Oct  7 13:33 RUNNING.txt
+-rw-r----- 1 root root  7136 Oct  7 13:33 RELEASE-NOTES
+drwxr-x--- 2 root root  4096 Oct 20 02:06 temp
+drwxr-x--- 2 root root  4096 Oct 20 02:06 lib
+drwxr-x--- 2 root root  4096 Oct 20 02:06 bin
+root@tomcat:/opt/tomcat# cd conf/
+root@tomcat:/opt/tomcat/conf# 
+
+
+
+
+
+
+
+
+
+
+
+root@tomcat:/opt/tomcat/conf# pwd
+/opt/tomcat/conf
+root@tomcat:/opt/tomcat/conf# ls -lrt
+total 224
+-rw------- 1 root root 171482 Oct  7 13:33 web.xml
+-rw------- 1 root root   2633 Oct  7 13:33 tomcat-users.xsd
+-rw------- 1 root root   2164 Oct  7 13:33 tomcat-users.xml
+-rw------- 1 root root   7513 Oct  7 13:33 server.xml
+-rw------- 1 root root   3916 Oct  7 13:33 logging.properties
+-rw------- 1 root root   2313 Oct  7 13:33 jaspic-providers.xsd
+-rw------- 1 root root   1149 Oct  7 13:33 jaspic-providers.xml
+-rw------- 1 root root   1338 Oct  7 13:33 context.xml
+-rw------- 1 root root   7661 Oct  7 13:33 catalina.properties
+-rw------- 1 root root  13548 Oct  7 13:33 catalina.policy
+root@tomcat:/opt/tomcat/conf# cat server.xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Note:  A "Server" is not itself a "Container", so you may not
+     define subcomponents such as "Valves" at this level.
+     Documentation at /docs/config/server.html
+ -->
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="org.apache.catalina.startup.VersionLoggerListener" />
+  <!-- Security listener. Documentation at /docs/config/listeners.html
+  <Listener className="org.apache.catalina.security.SecurityListener" />
+  -->
+  <!--APR library loader. Documentation at /docs/apr.html -->
+  <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />
+  <!-- Prevent memory leaks due to use of particular java/javax APIs-->
+  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener" />
+  <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener" />
+  <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener" />
+
+  <!-- Global JNDI resources
+       Documentation at /docs/jndi-resources-howto.html
+  -->
+  <GlobalNamingResources>
+    <!-- Editable user database that can also be used by
+         UserDatabaseRealm to authenticate users
+    -->
+    <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+  </GlobalNamingResources>
+
+  <!-- A "Service" is a collection of one or more "Connectors" that share
+       a single "Container" Note:  A "Service" is not itself a "Container",
+       so you may not define subcomponents such as "Valves" at this level.
+       Documentation at /docs/config/service.html
+   -->
+  <Service name="Catalina">
+
+    <!--The connectors can use a shared executor, you can define one or more named thread pools-->
+    <!--
+    <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
+        maxThreads="150" minSpareThreads="4"/>
+    -->
+
+
+    <!-- A "Connector" represents an endpoint by which requests are received
+         and responses are returned. Documentation at :
+         Java HTTP Connector: /docs/config/http.html
+         Java AJP  Connector: /docs/config/ajp.html
+         APR (HTTP/AJP) Connector: /docs/apr.html
+         Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
+    -->
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    <!-- A "Connector" using the shared thread pool-->
+    <!--
+    <Connector executor="tomcatThreadPool"
+               port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+    -->
+    <!-- Define an SSL/TLS HTTP/1.1 Connector on port 8443
+         This connector uses the NIO implementation. The default
+         SSLImplementation will depend on the presence of the APR/native
+         library and the useOpenSSL attribute of the
+         AprLifecycleListener.
+         Either JSSE or OpenSSL style configuration may be used regardless of
+         the SSLImplementation selected. JSSE style configuration is used below.
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true">
+        <SSLHostConfig>
+            <Certificate certificateKeystoreFile="conf/localhost-rsa.jks"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+    <!-- Define an SSL/TLS HTTP/1.1 Connector on port 8443 with HTTP/2
+         This connector uses the APR/native implementation which always uses
+         OpenSSL for TLS.
+         Either JSSE or OpenSSL style configuration may be used. OpenSSL style
+         configuration is used below.
+    -->
+    <!--
+    <Connector port="8443" protocol="org.apache.coyote.http11.Http11AprProtocol"
+               maxThreads="150" SSLEnabled="true" >
+        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+        <SSLHostConfig>
+            <Certificate certificateKeyFile="conf/localhost-rsa-key.pem"
+                         certificateFile="conf/localhost-rsa-cert.pem"
+                         certificateChainFile="conf/localhost-rsa-chain.pem"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+    -->
+
+    <!-- Define an AJP 1.3 Connector on port 8009 -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+
+
+    <!-- An Engine represents the entry point (within Catalina) that processes
+         every request.  The Engine implementation for Tomcat stand alone
+         analyzes the HTTP headers included with the request, and passes them
+         on to the appropriate Host (virtual host).
+         Documentation at /docs/config/engine.html -->
+
+    <!-- You should set jvmRoute to support load-balancing via AJP ie :
+    <Engine name="Catalina" defaultHost="localhost" jvmRoute="jvm1">
+    -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <!--For clustering, please take a look at documentation at:
+          /docs/cluster-howto.html  (simple how to)
+          /docs/config/cluster.html (reference documentation) -->
+      <!--
+      <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
+      -->
+
+      <!-- Use the LockOutRealm to prevent attempts to guess user passwords
+           via a brute-force attack -->
+      <Realm className="org.apache.catalina.realm.LockOutRealm">
+        <!-- This Realm uses the UserDatabase configured in the global JNDI
+             resources under the key "UserDatabase".  Any edits
+             that are performed against this UserDatabase are immediately
+             available for use by the Realm.  -->
+        <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/>
+      </Realm>
+
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+        <!-- SingleSignOn valve, share authentication between web applications
+             Documentation at: /docs/config/valve.html -->
+        <!--
+        <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
+        -->
+
+        <!-- Access log processes all example.
+             Documentation at: /docs/config/valve.html
+             Note: The pattern used is equivalent to using pattern="common" -->
+        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log" suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
+      </Host>
+    </Engine>
+  </Service>
+</Server>
+root@tomcat:/opt/tomcat/conf# 
+root@tomcat:/opt/tomcat/conf# pwd
+/opt/tomcat/conf
+root@tomcat:/opt/tomcat/conf# ls -lrt
+total 224
+-rw------- 1 root root 171482 Oct  7 13:33 web.xml
+-rw------- 1 root root   2633 Oct  7 13:33 tomcat-users.xsd
+-rw------- 1 root root   2164 Oct  7 13:33 tomcat-users.xml
+-rw------- 1 root root   7513 Oct  7 13:33 server.xml
+-rw------- 1 root root   3916 Oct  7 13:33 logging.properties
+-rw------- 1 root root   2313 Oct  7 13:33 jaspic-providers.xsd
+-rw------- 1 root root   1149 Oct  7 13:33 jaspic-providers.xml
+-rw------- 1 root root   1338 Oct  7 13:33 context.xml
+-rw------- 1 root root   7661 Oct  7 13:33 catalina.properties
+-rw------- 1 root root  13548 Oct  7 13:33 catalina.policy
+root@tomcat:/opt/tomcat/conf# ls -lrt tomcat-users.xml
+-rw------- 1 root root 2164 Oct  7 13:33 tomcat-users.xml
+root@tomcat:/opt/tomcat/conf# vim tomcat-users.xml
+root@tomcat:/opt/tomcat/conf# 
+root@tomcat:/opt/tomcat/conf# cp -pv tomcat-users.xml tomcat-users.xml_20191020
+'tomcat-users.xml' -> 'tomcat-users.xml_20191020'
+root@tomcat:/opt/tomcat/conf# 
+root@tomcat:/opt/tomcat/conf# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@tomcat:/opt/tomcat/conf# pwd
+/opt/tomcat/conf
+root@tomcat:/opt/tomcat/conf# cd ../
+root@tomcat:/opt/tomcat# ls -lrt
+total 144
+drwxr-x--- 2 root root  4096 Oct  7 13:30 work
+drwxr-x--- 2 root root  4096 Oct  7 13:30 logs
+drwxr-x--- 7 root root  4096 Oct  7 13:31 webapps
+-rw-r----- 1 root root  3255 Oct  7 13:33 README.md
+-rw-r----- 1 root root  1726 Oct  7 13:33 NOTICE
+-rw-r----- 1 root root 57011 Oct  7 13:33 LICENSE
+-rw-r----- 1 root root  5407 Oct  7 13:33 CONTRIBUTING.md
+-rw-r----- 1 root root 19318 Oct  7 13:33 BUILDING.txt
+-rw-r----- 1 root root 16262 Oct  7 13:33 RUNNING.txt
+-rw-r----- 1 root root  7136 Oct  7 13:33 RELEASE-NOTES
+drwxr-x--- 2 root root  4096 Oct 20 02:06 temp
+drwxr-x--- 2 root root  4096 Oct 20 02:06 lib
+drwxr-x--- 2 root root  4096 Oct 20 02:06 bin
+drwx------ 2 root root  4096 Oct 20 02:11 conf
+root@tomcat:/opt/tomcat# cd bin
+root@tomcat:/opt/tomcat/bin# pwd
+/opt/tomcat/bin
+root@tomcat:/opt/tomcat/bin# ls -lrt
+total 860
+-rwxr-x--- 1 root root   1908 Oct  7 13:31 version.sh
+-rw-r----- 1 root root   2026 Oct  7 13:31 version.bat
+-rwxr-x--- 1 root root   5515 Oct  7 13:31 tool-wrapper.sh
+-rw-r----- 1 root root   4574 Oct  7 13:31 tool-wrapper.bat
+-rw-r----- 1 root root 419428 Oct  7 13:31 tomcat-native.tar.gz
+-rw-r----- 1 root root  49937 Oct  7 13:31 tomcat-juli.jar
+-rwxr-x--- 1 root root   1904 Oct  7 13:31 startup.sh
+-rw-r----- 1 root root   2022 Oct  7 13:31 startup.bat
+-rwxr-x--- 1 root root   1902 Oct  7 13:31 shutdown.sh
+-rw-r----- 1 root root   2020 Oct  7 13:31 shutdown.bat
+-rwxr-x--- 1 root root   3708 Oct  7 13:31 setclasspath.sh
+-rw-r----- 1 root root   3460 Oct  7 13:31 setclasspath.bat
+-rwxr-x--- 1 root root   1965 Oct  7 13:31 digest.sh
+-rw-r----- 1 root root   2091 Oct  7 13:31 digest.bat
+-rwxr-x--- 1 root root   8513 Oct  7 13:31 daemon.sh
+-rwxr-x--- 1 root root   1922 Oct  7 13:31 configtest.sh
+-rw-r----- 1 root root   2040 Oct  7 13:31 configtest.bat
+-rw-r----- 1 root root  25197 Oct  7 13:31 commons-daemon.jar
+-rw-r----- 1 root root 206895 Oct  7 13:31 commons-daemon-native.tar.gz
+-rwxr-x--- 1 root root   1997 Oct  7 13:31 ciphers.sh
+-rw-r----- 1 root root   2123 Oct  7 13:31 ciphers.bat
+-rwxr-x--- 1 root root  23567 Oct  7 13:31 catalina.sh
+-rw-r----- 1 root root  15953 Oct  7 13:31 catalina.bat
+-rw-r----- 1 root root  35109 Oct  7 13:31 bootstrap.jar
+-rw-r----- 1 root root   1664 Oct  7 13:33 catalina-tasks.xml
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7139  0.0  0.1  14856  1012 pts/0    S+   02:13   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ./startup.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+Tomcat started.
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7148 60.0  7.1 2253424 71952 pts/0   Sl   02:13   0:02 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7192  0.0  0.0  14856  1004 pts/0    S+   02:13   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# pwd
+/opt/tomcat/bin
+root@tomcat:/opt/tomcat/bin# cd ../
+root@tomcat:/opt/tomcat# ls -lrt
+total 144
+drwxr-x--- 7 root root  4096 Oct  7 13:31 webapps
+-rw-r----- 1 root root  3255 Oct  7 13:33 README.md
+-rw-r----- 1 root root  1726 Oct  7 13:33 NOTICE
+-rw-r----- 1 root root 57011 Oct  7 13:33 LICENSE
+-rw-r----- 1 root root  5407 Oct  7 13:33 CONTRIBUTING.md
+-rw-r----- 1 root root 19318 Oct  7 13:33 BUILDING.txt
+-rw-r----- 1 root root 16262 Oct  7 13:33 RUNNING.txt
+-rw-r----- 1 root root  7136 Oct  7 13:33 RELEASE-NOTES
+drwxr-x--- 2 root root  4096 Oct 20 02:06 temp
+drwxr-x--- 2 root root  4096 Oct 20 02:06 lib
+drwxr-x--- 2 root root  4096 Oct 20 02:06 bin
+drwxr-x--- 2 root root  4096 Oct 20 02:13 logs
+drwx------ 3 root root  4096 Oct 20 02:13 conf
+drwxr-x--- 3 root root  4096 Oct 20 02:13 work
+root@tomcat:/opt/tomcat# cd conf/
+root@tomcat:/opt/tomcat/conf# ls -lrt
+total 232
+-rw------- 1 root root 171482 Oct  7 13:33 web.xml
+-rw------- 1 root root   2633 Oct  7 13:33 tomcat-users.xsd
+-rw------- 1 root root   2164 Oct  7 13:33 tomcat-users.xml_20191020
+-rw------- 1 root root   2164 Oct  7 13:33 tomcat-users.xml
+-rw------- 1 root root   7513 Oct  7 13:33 server.xml
+-rw------- 1 root root   3916 Oct  7 13:33 logging.properties
+-rw------- 1 root root   2313 Oct  7 13:33 jaspic-providers.xsd
+-rw------- 1 root root   1149 Oct  7 13:33 jaspic-providers.xml
+-rw------- 1 root root   1338 Oct  7 13:33 context.xml
+-rw------- 1 root root   7661 Oct  7 13:33 catalina.properties
+-rw------- 1 root root  13548 Oct  7 13:33 catalina.policy
+drwxr-x--- 3 root root   4096 Oct 20 02:13 Catalina
+root@tomcat:/opt/tomcat/conf# vim tomcat-users.xml
+root@tomcat:/opt/tomcat/conf# 
+root@tomcat:/opt/tomcat/conf# pwd
+/opt/tomcat/conf
+root@tomcat:/opt/tomcat/conf# cd ../
+root@tomcat:/opt/tomcat# pwd
+/opt/tomcat
+root@tomcat:/opt/tomcat# ls -lrt
+total 144
+drwxr-x--- 7 root root  4096 Oct  7 13:31 webapps
+-rw-r----- 1 root root  3255 Oct  7 13:33 README.md
+-rw-r----- 1 root root  1726 Oct  7 13:33 NOTICE
+-rw-r----- 1 root root 57011 Oct  7 13:33 LICENSE
+-rw-r----- 1 root root  5407 Oct  7 13:33 CONTRIBUTING.md
+-rw-r----- 1 root root 19318 Oct  7 13:33 BUILDING.txt
+-rw-r----- 1 root root 16262 Oct  7 13:33 RUNNING.txt
+-rw-r----- 1 root root  7136 Oct  7 13:33 RELEASE-NOTES
+drwxr-x--- 2 root root  4096 Oct 20 02:06 temp
+drwxr-x--- 2 root root  4096 Oct 20 02:06 lib
+drwxr-x--- 2 root root  4096 Oct 20 02:06 bin
+drwxr-x--- 2 root root  4096 Oct 20 02:13 logs
+drwxr-x--- 3 root root  4096 Oct 20 02:13 work
+drwx------ 3 root root  4096 Oct 20 02:21 conf
+root@tomcat:/opt/tomcat# cd bin
+root@tomcat:/opt/tomcat/bin# ls -lrt
+total 860
+-rwxr-x--- 1 root root   1908 Oct  7 13:31 version.sh
+-rw-r----- 1 root root   2026 Oct  7 13:31 version.bat
+-rwxr-x--- 1 root root   5515 Oct  7 13:31 tool-wrapper.sh
+-rw-r----- 1 root root   4574 Oct  7 13:31 tool-wrapper.bat
+-rw-r----- 1 root root 419428 Oct  7 13:31 tomcat-native.tar.gz
+-rw-r----- 1 root root  49937 Oct  7 13:31 tomcat-juli.jar
+-rwxr-x--- 1 root root   1904 Oct  7 13:31 startup.sh
+-rw-r----- 1 root root   2022 Oct  7 13:31 startup.bat
+-rwxr-x--- 1 root root   1902 Oct  7 13:31 shutdown.sh
+-rw-r----- 1 root root   2020 Oct  7 13:31 shutdown.bat
+-rwxr-x--- 1 root root   3708 Oct  7 13:31 setclasspath.sh
+-rw-r----- 1 root root   3460 Oct  7 13:31 setclasspath.bat
+-rwxr-x--- 1 root root   1965 Oct  7 13:31 digest.sh
+-rw-r----- 1 root root   2091 Oct  7 13:31 digest.bat
+-rwxr-x--- 1 root root   8513 Oct  7 13:31 daemon.sh
+-rwxr-x--- 1 root root   1922 Oct  7 13:31 configtest.sh
+-rw-r----- 1 root root   2040 Oct  7 13:31 configtest.bat
+-rw-r----- 1 root root  25197 Oct  7 13:31 commons-daemon.jar
+-rw-r----- 1 root root 206895 Oct  7 13:31 commons-daemon-native.tar.gz
+-rwxr-x--- 1 root root   1997 Oct  7 13:31 ciphers.sh
+-rw-r----- 1 root root   2123 Oct  7 13:31 ciphers.bat
+-rwxr-x--- 1 root root  23567 Oct  7 13:31 catalina.sh
+-rw-r----- 1 root root  15953 Oct  7 13:31 catalina.bat
+-rw-r----- 1 root root  35109 Oct  7 13:31 bootstrap.jar
+-rw-r----- 1 root root   1664 Oct  7 13:33 catalina-tasks.xml
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7148  1.0 11.1 2261616 112320 pts/0  Sl   02:13   0:05 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7209  0.0  0.1  14856  1148 pts/0    S+   02:21   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -ef | grep tomcat
+root      7148     1  1 02:13 pts/0    00:00:05 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7212  7088  0 02:22 pts/0    00:00:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ./shutdown.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7238  0.0  0.1  14856  1108 pts/0    S+   02:22   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ./startup.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+Tomcat started.
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7247 82.6  7.3 2253424 73936 pts/0   Sl   02:22   0:02 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7291  0.0  0.1  14856  1044 pts/0    S+   02:22   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# pwd
+/opt/tomcat/bin
+root@tomcat:/opt/tomcat/bin# cd ../
+root@tomcat:/opt/tomcat# pwd
+/opt/tomcat
+root@tomcat:/opt/tomcat# ls -lrt
+total 144
+drwxr-x--- 7 root root  4096 Oct  7 13:31 webapps
+-rw-r----- 1 root root  3255 Oct  7 13:33 README.md
+-rw-r----- 1 root root  1726 Oct  7 13:33 NOTICE
+-rw-r----- 1 root root 57011 Oct  7 13:33 LICENSE
+-rw-r----- 1 root root  5407 Oct  7 13:33 CONTRIBUTING.md
+-rw-r----- 1 root root 19318 Oct  7 13:33 BUILDING.txt
+-rw-r----- 1 root root 16262 Oct  7 13:33 RUNNING.txt
+-rw-r----- 1 root root  7136 Oct  7 13:33 RELEASE-NOTES
+drwxr-x--- 2 root root  4096 Oct 20 02:06 temp
+drwxr-x--- 2 root root  4096 Oct 20 02:06 lib
+drwxr-x--- 2 root root  4096 Oct 20 02:06 bin
+drwxr-x--- 2 root root  4096 Oct 20 02:13 logs
+drwxr-x--- 3 root root  4096 Oct 20 02:13 work
+drwx------ 3 root root  4096 Oct 20 02:21 conf
+root@tomcat:/opt/tomcat# cd webapps/
+root@tomcat:/opt/tomcat/webapps# ls -lrt
+total 20
+drwxr-x---  3 root root 4096 Oct 20 02:06 ROOT
+drwxr-x--- 15 root root 4096 Oct 20 02:06 docs
+drwxr-x---  6 root root 4096 Oct 20 02:06 examples
+drwxr-x---  5 root root 4096 Oct 20 02:06 manager
+drwxr-x---  5 root root 4096 Oct 20 02:06 host-manager
+root@tomcat:/opt/tomcat/webapps# ls -lrt manager/
+total 32
+-rw-r----- 1 root root 4615 Oct  7 13:33 xform.xsl
+-rw-r----- 1 root root 4374 Oct  7 13:33 status.xsd
+-rw-r----- 1 root root  913 Oct  7 13:33 index.jsp
+drwxr-x--- 2 root root 4096 Oct 20 02:06 images
+drwxr-x--- 3 root root 4096 Oct 20 02:06 WEB-INF
+drwxr-x--- 2 root root 4096 Oct 20 02:06 META-INF
+root@tomcat:/opt/tomcat/webapps# ls -lrt manager/META-INF/
+total 4
+-rw-r----- 1 root root 1223 Oct  7 13:33 context.xml
+root@tomcat:/opt/tomcat/webapps# ls -lrt manager/META-INF/context.xml 
+-rw-r----- 1 root root 1223 Oct  7 13:33 manager/META-INF/context.xml
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# ls -lrt manager/META-INF/context.xml 
+-rw-r----- 1 root root 1223 Oct  7 13:33 manager/META-INF/context.xml
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# ls -lrt host-manager/ 
+total 20
+-rw-r----- 1 root root 1021 Oct  7 13:33 manager.xml
+-rw-r----- 1 root root  913 Oct  7 13:33 index.jsp
+drwxr-x--- 2 root root 4096 Oct 20 02:06 images
+drwxr-x--- 3 root root 4096 Oct 20 02:06 WEB-INF
+drwxr-x--- 2 root root 4096 Oct 20 02:06 META-INF
+root@tomcat:/opt/tomcat/webapps# ls -lrt host-manager/META-INF/
+total 4
+-rw-r----- 1 root root 1222 Oct  7 13:33 context.xml
+root@tomcat:/opt/tomcat/webapps# ls -lrt host-manager/META-INF/context.xml 
+-rw-r----- 1 root root 1222 Oct  7 13:33 host-manager/META-INF/context.xml
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# vim manager/META-INF/context.xml 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# vim host-manager/META-INF/context.xml 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# grep '|.*' manager/META-INF/context.xml
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# grep '|.*' host-manager/META-INF/context.xml
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# cd ../
+root@tomcat:/opt/tomcat# cd bin
+root@tomcat:/opt/tomcat/bin# pwd
+/opt/tomcat/bin
+root@tomcat:/opt/tomcat/bin# ls -lrt
+total 860
+-rwxr-x--- 1 root root   1908 Oct  7 13:31 version.sh
+-rw-r----- 1 root root   2026 Oct  7 13:31 version.bat
+-rwxr-x--- 1 root root   5515 Oct  7 13:31 tool-wrapper.sh
+-rw-r----- 1 root root   4574 Oct  7 13:31 tool-wrapper.bat
+-rw-r----- 1 root root 419428 Oct  7 13:31 tomcat-native.tar.gz
+-rw-r----- 1 root root  49937 Oct  7 13:31 tomcat-juli.jar
+-rwxr-x--- 1 root root   1904 Oct  7 13:31 startup.sh
+-rw-r----- 1 root root   2022 Oct  7 13:31 startup.bat
+-rwxr-x--- 1 root root   1902 Oct  7 13:31 shutdown.sh
+-rw-r----- 1 root root   2020 Oct  7 13:31 shutdown.bat
+-rwxr-x--- 1 root root   3708 Oct  7 13:31 setclasspath.sh
+-rw-r----- 1 root root   3460 Oct  7 13:31 setclasspath.bat
+-rwxr-x--- 1 root root   1965 Oct  7 13:31 digest.sh
+-rw-r----- 1 root root   2091 Oct  7 13:31 digest.bat
+-rwxr-x--- 1 root root   8513 Oct  7 13:31 daemon.sh
+-rwxr-x--- 1 root root   1922 Oct  7 13:31 configtest.sh
+-rw-r----- 1 root root   2040 Oct  7 13:31 configtest.bat
+-rw-r----- 1 root root  25197 Oct  7 13:31 commons-daemon.jar
+-rw-r----- 1 root root 206895 Oct  7 13:31 commons-daemon-native.tar.gz
+-rwxr-x--- 1 root root   1997 Oct  7 13:31 ciphers.sh
+-rw-r----- 1 root root   2123 Oct  7 13:31 ciphers.bat
+-rwxr-x--- 1 root root  23567 Oct  7 13:31 catalina.sh
+-rw-r----- 1 root root  15953 Oct  7 13:31 catalina.bat
+-rw-r----- 1 root root  35109 Oct  7 13:31 bootstrap.jar
+-rw-r----- 1 root root   1664 Oct  7 13:33 catalina-tasks.xml
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7247  1.0  8.1 2255472 82132 pts/0   Sl   02:22   0:03 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7310  0.0  0.1  14856  1028 pts/0    S+   02:28   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ./shutdown.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7337  0.0  0.0  14856  1004 pts/0    S+   02:29   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ./startup.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+Tomcat started.
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep tomcat
+root      7346 81.6  7.2 2253424 73328 pts/0   Sl   02:29   0:02 /usr/lib/jvm/java-8-openjdk-amd64//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      7390  0.0  0.1  14856  1052 pts/0    S+   02:29   0:00 grep --color=auto tomcat
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# 
+

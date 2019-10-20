@@ -1,0 +1,54 @@
+Agenda :
+
+8. Download, Install and Configure Application Server(Apache Tomcat)
+9. Execute Manual Job on Windows/MacOS/Linux :
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war | keshavkummari.war 
+
+10. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment(dev.codewithckk.com)
+11. Download, Install and Configure Jenkins 
+12. Download, Install and Configure Jfrog Artifactory
+13. Maven and Jfrog Integration
+14. Install required Plugins for Jenkins 
+15. Setup Environment Variables for Jenkins(i.e. Java & Maven)
+16. Execute a Maven Job from Jenkins Server using Command-Line and validate the Job   
+17. Create a Job on Jenkins and execute a maven job from Jenkins UI and validate the job
+18. Validate the Artifactory under Jfrog Artifactory i.e. lib-snapshot-local
+19. Modify or Create a new Job in Jenkins to Deploy code to Application Server i.e. Apache Tomcat 
+20. Validate all the steps : 
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war
+    6 Deploy to Tomcat 
+    7 Validate the deployment using a Browser
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>releases</name>
+			<url>http://54.80.153.194:8081/artifactory/libs-release-local/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>snapshots</name>
+			<url>http://54.80.153.194:8081/artifactory/libs-snapshot-local/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>fbb4a5f05f62-snapshots</name>
+        <url>http://54.80.153.194:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
+
+docker run -d --name artifactory -v $PWD/data:/var/opt/jfrog/artifactory -p 8081:8081 goodrainapps/artifactory-oss
+
+docker run -id --name binarycoderepo -p 8081:8081 goodrainapps/artifactory-oss
