@@ -1,0 +1,219 @@
+Agenda :
+
+Developer Flow:
+    6.1 Build           
+    6.2 Compile
+    6.3 Junit Test  
+                     6.4 Code Quality using SonarQube (Additional Topic)
+    6.5 Package the code to .war or .jar 
+
+    6.6 Move the Binary code to Artifact Manager i.e. Jfrog 0r Nexus 
+    Developer :
+        libs-snapshot-local (Package the code to .war or .jar )
+    DevOps :    
+        libs-release-local  (Package the code to .war or .jar )
+
+    6.7 Deploy the Snapshot to Development environment (dev)
+    6.8 Validate the Build and Deployment 
+
+DevOps Flow:
+    6.1 Build           
+    6.2 Compile
+    6.3 Junit Test  
+                     6.4 Code Quality using SonarQube (Additional Topic)
+    6.5 Package the code to .war or .jar 
+
+    6.6 Move the Binary code to Artifact Manager i.e. Jfrog 0r Nexus 
+    DevOps :    
+        libs-release-local  (Package the code to .war or .jar )
+
+    6.7 Deploy the Snapshot to Development environment (tst, acc, prd)
+    6.8 Validate the Build and Deployment 
+
+Idea to Production :
+
+WebApplication - Java 
+
+Step-1 : Plan (Agile Scrum Framework)
+            Tool : Jira & Trello 
+Idea(WebApplication) to Production(Live) 
+
+SDLC : Agile + DevOps
+
+Scrum Rituals :
+   1. Sprint 
+       - Sprint Planning 
+       - Daily Scrum (Mon-Fri @ 15days)
+       - Refine (If the Story is not clear and that need to be refined)
+       - Review (About How Sprint is progressing etc..)
+       - Retro 
+       - End the Sprint (End the Sprint)
+       - Start Sprint-2
+       - 2 Weeks 
+   2. Basic WebApplication 
+
+Agile + DevOps :
+1. PO,
+2. SM, & 
+3. DevOps (Dev, QA, SysAdmin, DB Admin, Ops, Business etc...) 
+
+STEP-1 : Create a Java Project with Maven Build Tool dependency 
+
+https://start.spring.io/
+
+STEP-2 : Import Java Project in IDE tools i.e. STS, Eclipse
+
+STEP-2.1 : Versionize the Java Project & Collabrate with other developers 
+
+    1. git software (https://git-scm.com)
+    $ git --version
+    git version 2.22.0
+
+    2. Create an Account with github.com 
+    UserName : 
+    PassWord : 
+
+STEP-3 : Start Coding 
+
+    1. Server Side Coding : Java 
+    2. Client Side Coding : HTML, CSS, JS etc... 
+    3. Integrations       : Database, 3rd Party API's using XML files 
+
+STEP-4 : Developer Flow:
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Code Quality using SonarQube 
+    5 Package the code to .war or .jar 
+    6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    7 Deploy the Snapshot to Development environment 
+    8 Validate the Build and Deployment 
+
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war 
+
+    Next Week: 
+    6. Download, Install and Configure Application Server i.e. Apache Tomcat 
+    7. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment 
+
+
+STEP-5 : Our Project is Java and Maven 
+
+Ubuntu Instance :
+
+Download, Install and Configure :
+
+    1. Java 1.8 
+    2. Maven 3.5.4
+
+
+Agenda :
+#-----------------------------------------------------------------------------------------#
+1. Git :
+    1. Download, Install and Configure git on Windows/MacOS/Linux 
+    1.1. GIT Installation 
+    1.2. GIT Configuration
+    1.3. Start a Project or Creating a Repository
+    1.4. DAY-To-DAY Git Workflow Commands 
+2. Github : 
+3. Git GUI Tools - Source Tree 
+4. Download, & Install  Java & Maven 
+5. Configure Environment variables of Java and Maven 
+6. Created a Java Sprint Boot Maven Dependend Project from start.spring.io 
+7. Versioned the Java Project using gitflow with the help of Gitbash & Github
+8. Download, Install and Configure Application Server(Apache Tomcat)
+9. Execute Manual Job on Windows/MacOS/Linux :
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war 
+
+10. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment(dev.codewithckk.com)
+11. Download, Install and Configure Jenkins 
+12. Download, Install and Configure Jfrog Artifactory
+13. Maven and Jfrog Integration
+14. Install required Plugins for Jenkins 
+15. Setup Environment Variables for Jenkins(i.e. Java & Maven)
+16. Execute a Maven Job from Jenkins Server using Command-Line and validate the Job   
+17. Create a Job on Jenkins and execute a maven job from Jenkins UI and validate the job
+18. Validate the Artifactory under Jfrog Artifactory i.e. lib-snapshot-local
+19. Modify or Create a new Job in Jenkins to Deploy code to Application Server i.e. Apache Tomcat 
+20. Validate all the steps : 
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war
+    6 Deploy to Tomcat 
+    7 Validate the deployment using a Browser
+
+
+
+8. Download, Install and Configure Application Server(Apache Tomcat)
+9. Execute Manual Job on Windows/MacOS/Linux :
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war | keshavkummari.war 
+
+10. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment(dev.codewithckk.com)
+11. Download, Install and Configure Jenkins 
+12. Download, Install and Configure Jfrog Artifactory
+13. Maven and Jfrog Integration
+14. Install required Plugins for Jenkins 
+15. Setup Environment Variables for Jenkins(i.e. Java & Maven)
+16. Execute a Maven Job from Jenkins Server using Command-Line and validate the Job   
+17. Create a Job on Jenkins and execute a maven job from Jenkins UI and validate the job
+18. Validate the Artifactory under Jfrog Artifactory i.e. lib-snapshot-local
+19. Modify or Create a new Job in Jenkins to Deploy code to Application Server i.e. Apache Tomcat 
+20. Validate all the steps : 
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war
+    6 Deploy to Tomcat 
+    7 Validate the deployment using a Browser
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>releases</name>
+			<url>http://54.80.153.194:8081/artifactory/libs-release-local/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>snapshots</name>
+			<url>http://54.80.153.194:8081/artifactory/libs-snapshot-local/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>fbb4a5f05f62-snapshots</name>
+        <url>http://54.80.153.194:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
+
+docker run -d --name artifactory -v $PWD/data:/var/opt/jfrog/artifactory -p 8081:8081 goodrainapps/artifactory-oss
+
+docker run -id --name binarycoderepo -p 8081:8081 goodrainapps/artifactory-oss
+
+Container Concepts :
+
+1. Docker 
+2. Docker Hub
+3. Docker Images
+4. Docker Containers 
+5. Docker - Jenkins 
+6. Docker - Tomcat 
+7. Docker - Jfrog 
+8. Docker - SonarQube 
+9. Docker - Nagios 
