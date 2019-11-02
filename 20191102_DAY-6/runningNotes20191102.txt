@@ -1,0 +1,19 @@
+Agenda :
+
+1. Docker 
+2. Docker Hub
+3. Docker Images
+4. Docker Containers 
+5. Docker - Jenkins 
+6. Docker - Tomcat 
+7. Docker - Jfrog 
+8. Docker - SonarQube 
+9. Docker - Nagios 
+
+List of Containerization Technologies :
+
+https://xebialabs.com/the-ultimate-devops-tool-chest/containerization/
+
+
+Download Docker Engine:
+https://docs.docker.com/docker-for-windows/install/

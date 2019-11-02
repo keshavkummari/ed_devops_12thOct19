@@ -217,3 +217,17 @@ Container Concepts :
 7. Docker - Jfrog 
 8. Docker - SonarQube 
 9. Docker - Nagios 
+
+ 505  touch Dockerfile
+  506  pwd
+  507  ls -lrta
+  508  docker images
+  509  docker ps
+  510  docker build .
+  511  docker images
+  512  docker run -d --name MyCustomTomcatServer -p 8080:8080 9244e1104f10
+  513  docker ps
+  514  ifconfig | grep 192.168
+  515  docker stop 34c2da24ed08
+
+  
