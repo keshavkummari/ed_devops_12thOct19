@@ -1,0 +1,86 @@
+
+ubuntu@ip-172-31-20-222:~$ sudo hostnamectl set-hostname "anible.ckk.com"
+ubuntu@ip-172-31-20-222:~$ 
+ubuntu@ip-172-31-20-222:~$ /bin/bash
+ubuntu@anible:~$ 
+ubuntu@anible:~$ hostname
+anible.ckk.com
+ubuntu@anible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@anible:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.20.222  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::7f:1aff:fecf:1ffc  prefixlen 64  scopeid 0x20<link>
+        ether 02:7f:1a:cf:1f:fc  txqueuelen 1000  (Ethernet)
+        RX packets 983  bytes 608277 (608.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 677  bytes 78265 (78.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 176  bytes 14594 (14.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 176  bytes 14594 (14.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@anible:~$ # 172.31.20.222 anible.ckk.com
+ubuntu@anible:~$ 
+ubuntu@anible:~$ sudo vi /etc/hosts
+ubuntu@anible:~$ 
+ubuntu@anible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+172.31.20.222 anible.ckk.com
+ubuntu@anible:~$ 
+
+
+root@anible:~# # Configure SSH Access 
+root@anible:~# 
+root@anible:~# ssh-key
+ssh-keygen   ssh-keyscan  
+root@anible:~# ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:KALhASx9zopNjmMrCY0O2oEX4qMjD4JTeyLi1d2Jo7s root@anible.ckk.com
+The key's randomart image is:
++---[RSA 2048]----+
+|=o               |
+|ooo .            |
+|o. +             |
+|..o o  .         |
+|.@oo. . S        |
+|X=Bo... o .      |
+|#==o.. + o       |
+|@*oo  . .        |
+|o+.  Eo          |
++----[SHA256]-----+
+root@anible:~# ls -lrt /root/.ssh/
+total 12
+-rw------- 1 root root  550 Nov  3 02:51 authorized_keys
+-rw-r--r-- 1 root root  401 Nov  3 03:16 id_rsa.pub
+-rw------- 1 root root 1675 Nov  3 03:16 id_rsa
+

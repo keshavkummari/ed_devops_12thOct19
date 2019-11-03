@@ -1,0 +1,31 @@
+
+STEP-1 : 
+
+sudo hostnamectl set-hostname "ansible-master.ckk.com"
+
+ifconfig 
+
+vi /etc/hosts 
+
+
+vi /etc/hosts 
+
+STEP-2 : Create a User i.e. test on ansible-master.ckk.com and ansible-node.ckk.com 
+
+Instance-1 : CentOS-7
+Hostname   : ansible-master.ckk.com
+IPAddress  : 172.31.89.8
+Useradd    : test
+Password   : redhat
+Add user   : /etc/sudoers
+Uncomment  : "PermitRootLogin" in /etc/ssh/sshd_config (PermitRootLogin yes)
+Uncomment  : "PasswordAuthentication" in /etc/ssh/sshd_config (PasswordAuthentication yes)
+SSH Daemon : Restart systemctl restart sshd
+Generate SSHKey 		: ssh-keygen
+Exchange SSHKey 		: ssh-copy-id <ansible-node.ckk.com>/ipaddress
+Utility Softwares 		: # yum install wget vim curl elinks unzip -y
+Dependency Softwares 	: # yum install python -y
+
+STEP-3 : Generate SSH-Keys on ansible-master.ckk.com  and Share with ansible-node.ckk.com  
+
+

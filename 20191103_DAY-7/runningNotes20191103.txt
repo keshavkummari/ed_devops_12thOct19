@@ -1,0 +1,42 @@
+Agenda :
+
+1. Configuration Management - 1. Ansible & 2. Puppet 
+
+What is Ansible ?
+
+    - Ansible is Open-Source Software 
+    - Software Provisioning 
+    - Configuration Management
+    - Application Deployment  
+    - Push Based 
+    - Python
+    - Agentless 
+    - SSH 
+
+Topics :
+
+1. Introduction to Ansible
+2. Ansible Architecture
+3. Setting up Ansible 
+4. Ad-hoc commands in Ansible 
+5. Ansible Playbook 
+6. Roles in Ansible 
+7. Integration with Jenkins 
+
+keshavkummari.war --->
+    -----------------> Stages :
+   AWS Cloud :
+    --------> development environment (https://dev.keshavkummari.com/) : EC2(Linux);Java(1.8);Tomcat(8);keshavkummari.war
+    --------> testing environment     (https://tst.keshavkummari.com/) : EC2(Linux);Java(1.8);Tomcat(8);keshavkummari.war
+   AZURE Cloud : 
+    --------> acceptance environment  (https://acc.keshavkummari.com/) : EC2(Linux);Java(1.8);Tomcat(8);keshavkummari.war
+    --------> production environment  (https://keshavkummari.com/)     : EC2(Linux);Java(1.8);Tomcat(8);keshavkummari.war
+
+DevOps : QA Engineers 
+
+i-shape : Developer
+T-Shape : Developer & Testing 
+Pi-Shape: Developer + Testing + Deploying 
+Comb-Shape : Developer + Testing + Deploying + Business 
+
+Comb-Shape IT Professional 

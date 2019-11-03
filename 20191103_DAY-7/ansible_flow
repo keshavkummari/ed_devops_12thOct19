@@ -1,0 +1,23 @@
+
+STEP-1 : Hostname
+
+STEP-2 : Add Ansible Repo
+
+STEP-3 : Install Ansible 
+
+ubuntu@anible:~$ ansible --version
+ansible 2.9.0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ubuntu/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible
+  python version = 2.7.15+ (default, Oct  7 2019, 17:39:04) [GCC 7.4.0]
+
+STEP-4 : Validate Python latest version 
+
+STEP-5 : 
+ansible             ansible-connection  ansible-doc         ansible-inventory   ansible-pull        
+ansible-config      ansible-console     ansible-galaxy      ansible-playbook    ansible-vault 
+
+STEP-5 Generate SSH Keys :
+

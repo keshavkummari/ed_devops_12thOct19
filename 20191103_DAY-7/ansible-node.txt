@@ -1,0 +1,18 @@
+
+Instance-2 : CentOS-7
+Hostname   : ansible-node.ckk.com
+IPAddress  : 172.31.90.164
+Useradd    : test
+Password   : redhat
+Add user   : /etc/sudoers
+Uncomment  : "PermitRootLogin" in /etc/ssh/sshd_config (PermitRootLogin yes)
+Uncomment  : "PasswordAuthentication" in /etc/ssh/sshd_config (PasswordAuthentication yes)
+SSH Daemon : Restart systemctl restart sshd
+Generate SSHKey 		: ssh-keygen
+Exchange SSHKey 		: ssh-copy-id <node1.kk.com>/ipaddress
+Utility Softwares 		: # yum install wget vim curl elinks unzip -y
+Dependency Softwares 	: # yum install python -y
+
+sudo hostnamectl set-hostname "ansible-node.ckk.com"
+
+ssh -i "ansible_aws.pem" centos@ec2-3-86-28-106.compute-1.amazonaws.com
