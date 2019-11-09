@@ -1,0 +1,28 @@
+
+Ansible Playbook Structure:
+
+Playbook --> Play-1 --> Task-1 --> Module, Notify & Handler
+         --> Play-2 --> Task-2 --> Module, Notify & Handler
+         --> Play-3 --> Task-3 --> Module, Notify & Handler
+
+Note: 
+Handler gets triggered from Notify and executed at the 
+end only once.
+
+---
+- name: MyFirst PlayBook
+  hosts: /etc/ansible/hosts(AppServer or 172.31.9.179 or ansible-node1.ckk.com)
+  remote_user: ansi 
+  become: yes
+  become_method: sudo 
+
+  tasks:
+      - name: Install an Apache WebServer i.e. httpd
+        yum:
+          name: httpd 
+          state: present
+      - name:
+        service:
+          name: httpd
+          state: started
+...

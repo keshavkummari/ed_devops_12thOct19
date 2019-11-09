@@ -1,0 +1,58 @@
+[ansi@ansible-master ~]$ ls
+ApacheHttpdServer.yaml  webserver.yml
+[ansi@ansible-master ~]$ cat ApacheHttpdServer.yaml 
+---
+- name: MyFirst PlayBook
+  hosts: AppServer
+  remote_user: ansi 
+  become: yes
+  become_method: sudo 
+
+  tasks:
+      - name: Install an Apache WebServer i.e. httpd
+        yum:
+          name: httpd 
+          state: present
+      - name:
+        service:
+          name: httpd
+          state: started
+...
+[ansi@ansible-master ~]$ ansible-playbook ApacheHttpdServer.yaml --syntax-check
+
+playbook: ApacheHttpdServer.yaml
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ ansible-playbook ApacheHttpdServer.yaml --check
+
+PLAY [MyFirst PlayBook] *******************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [172.31.9.179]
+
+TASK [Install an Apache WebServer i.e. httpd] *********************************************************************************
+changed: [172.31.9.179]
+
+TASK [service] ****************************************************************************************************************
+changed: [172.31.9.179]
+
+PLAY RECAP ********************************************************************************************************************
+172.31.9.179               : ok=3    changed=2    unreachable=0    failed=0   
+
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ ansible-playbook ApacheHttpdServer.yaml
+
+PLAY [MyFirst PlayBook] *******************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [172.31.9.179]
+
+TASK [Install an Apache WebServer i.e. httpd] *********************************************************************************
+changed: [172.31.9.179]
+
+TASK [service] ****************************************************************************************************************
+changed: [172.31.9.179]
+
+PLAY RECAP ********************************************************************************************************************
+172.31.9.179               : ok=3    changed=2    unreachable=0    failed=0   
+
+[ansi@ansible-master ~]$ 

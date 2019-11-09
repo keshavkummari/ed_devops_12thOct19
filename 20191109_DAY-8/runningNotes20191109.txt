@@ -1,0 +1,97 @@
+Agenda:
+
+1. Ansible
+2. Recap of CI and CD Pipeline
+    1. Jenkins
+    2. Maven
+    3. Jfrog
+    4. Maven & Jfrog Integration
+    5. Tomcat
+    6. SonarQube
+    7. Nagios
+    8. Creating Jobs in Jenkins 
+    9. Deploy a Build on development environment using Jenkins-CI 
+    10. Review 
+    11. Summary
+    12. Q&A 
+
+1. Ansible :
+
+    1. YAML : YAML Ain't Markup Language 
+    File Extention : .yaml or .yml 
+
+    2. YAML DataTypes : 
+        - Scalars
+        - Sequences
+        - Mappings 
+
+Basic Data Types :
+    - Mappings( Hashes / Dictionaries)
+    - Sequences ( Arrays / Lists )
+    - Scalars ( Strings / Numbers )
+
+Example :
+Data Types in Python programming Language:
+1. Number    :  id = 1020
+2. Strings   : firstname = 'Guido Van Rossum'
+3. Lists     : names = ['Guido','Van',Rossum']
+4. Tuples    : languages = ('Java','.Net','NodeJS','Python')
+5. Dictionaries : cloud_vendors = {'AWS':2006,'AZURE':2010,'GCP':2011,'PythonWasCreatedBY':'Guido Van Rossum'}
+
+YAML Syntax :
+
+---  : Start 
+
+...  : End  
+
+YAML DataTypes Example :
+
+1. Scalars(Numbers & Strings) :
+    
+integer: 20
+
+float: 25.0 
+
+string: '20'  or "20"    
+
+boolean: Yes 
+
+2. Sequences :
+
+List : 
+
+- aws 
+- azure 
+- gcp 
+
+Neasted List 
+
+- 
+ - aws 
+ - azure 
+ - gcp 
+
+- 
+ - Java 
+ - NodeJS 
+ - .net 
+ - Python 
+
+ -
+  - 
+   - aws 
+   - azure 
+   - gcp 
+
+Note : Sequences can be added to other data structure types i.e. Mappings(Hashes/Dictionaries) 
+or Scalars(Numbers/Strings)
+
+Mappings: Keys and Values 
+
+cloud: aws 
+language: python
+
+cloud_vendors:
+    - aws 
+    - azure 
+    - gcp 

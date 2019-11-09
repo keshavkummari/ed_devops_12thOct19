@@ -1,0 +1,51 @@
+## ANSIBLE MASTER SEUP:
+
+STEP-1:
+OS : AmazonLinux 
+
+STEP-2:
+HostName
+
+STEP-3:
+Utility Softwares : vim, curl, unzip
+
+STEP-4:
+Useradd - ansi
+Passwd - ansi 
+& add user to Sudoers list
+SSH Configuration modifications
+
+STEP-5:
+SSH-Keys & Shared with ansible-node
+
+STEP-6:
+Ansible Repo & Installed Ansible
+
+STEP-7:
+Ansible Configuration
+
+STEP-8: 
+Ping Module was executed
+
+ANSIBLE NODE : 
+
+## ANSIBLE NODE SEUP:
+
+STEP-1:
+OS : AmazonLinux 
+
+STEP-2:
+HostName
+
+STEP-3:
+
+Useradd - ansi
+Passwd - ansi 
+& add user to Sudoers list
+SSH Configuration modifications
+
+service sshd restart
+
+STEP-4 : Public Key of ansible master 
+
+

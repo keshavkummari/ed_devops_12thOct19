@@ -1,0 +1,37 @@
+[root@ansible-master ~]# grep -H -n -i 'ansi' /etc/passwd /etc/shadow /etc/group /etc/gshadow
+/etc/passwd:26:ansi:x:501:501::/home/ansi:/bin/bash
+/etc/shadow:26:ansi:$6$VhK0iYCh$FgssNetq7MYjybWmKoh7OERon9MD7ZrXpcwvKlSBtYzoRc2Y1pl/rV6IWidzxg/pB6UfLsEhQA0toIyE2T4dY1:18207:0:99999:7:::
+/etc/group:43:ansi:x:501:
+/etc/gshadow:43:ansi:!::
+[root@ansible-master ~]# 
+[root@ansible-master ~]# grep -H -n -i 'ansi' /etc/sudoers
+/etc/sudoers:92:ansi	ALL=(ALL) 	NOPASSWD: ALL
+[root@ansible-master ~]# 
+[root@ansible-master ~]# vi /etc/ssh/sshd_config 
+[root@ansible-master ~]# 
+[root@ansible-master ~]# grep -H -n -i 'PermitRootLogin' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:38:PermitRootLogin yes
+/etc/ssh/sshd_config:40:PermitRootLogin forced-commands-only
+/etc/ssh/sshd_config:91:# the setting of "PermitRootLogin without-password".
+[root@ansible-master ~]# 
+[root@ansible-master ~]# vi /etc/ssh/sshd_config 
+[root@ansible-master ~]# 
+[root@ansible-master ~]# grep -H -n -i 'PasswordAuthentication' /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:65:PasswordAuthentication yes
+/etc/ssh/sshd_config:89:# PasswordAuthentication.  Depending on your PAM configuration,
+/etc/ssh/sshd_config:93:# PAM authentication, then enable this but set PasswordAuthentication
+
+[ansi@ansible-master ~]$ vi /etc/ansible/ansible.cfg
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ grep -H -n -i '/etc/ansible/hosts' /etc/ansible/ansible.cfg
+/etc/ansible/ansible.cfg:14:inventory      = /etc/ansible/hosts
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ vi /etc/ansible/hosts
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ grep -H -n -i 'web' /etc/ansible/hosts
+/etc/ansible/hosts:18:# Ex 2: A collection of hosts belonging to the 'webservers' group
+/etc/ansible/hosts:19:[web]
+/etc/ansible/hosts:22:## [webservers]
+[ansi@ansible-master ~]$ 
+[ansi@ansible-master ~]$ grep -H -n -i '172' /etc/ansible/hosts
+/etc/ansible/hosts:20:172.31.17.11

@@ -1,0 +1,17 @@
+---
+- name: MyFirst PlayBook
+  hosts: AppServer
+  remote_user: ansi 
+  become: yes
+  become_method: sudo 
+
+  tasks:
+      - name: Install an Apache WebServer i.e. httpd
+        yum:
+          name: httpd 
+          state: present
+      - name:
+        service:
+          name: httpd
+          state: started
+...
