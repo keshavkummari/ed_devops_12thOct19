@@ -1,0 +1,39 @@
+
+CI/CD  : Developer Flow:
+    1 Compile           
+    2 Build
+    3 Junit Test  
+        4 Code Quality using SonarQube 
+    5 Package the code to .war or .jar 
+            (Maven with Jfrog Integration) i.e. settings.xml & settings-security.xml 
+    6 Move the Binary code to Artifact Manager i.e. Jfrog 
+    7 Deploy the Snapshot to Development environment (Tomcat)
+    8 Validate the Build and Deployment 
+
+    1 Compile           
+    2 Build
+    3 Junit Test  
+    4 Package the code to .war or .jar 
+    5 Snapshot devops-1.1.0-SNAPSHOT.war 
+    6. Download, Install and Configure Application Server i.e. Apache Tomcat 
+    7. Deploy the Snapshot(devops-1.1.0-SNAPSHOT.war) to Development environment 
+
+mvn clean package deploy 
+
+2. Kubernetes 
+
+
+Kubernetes Architecture:
+
+1. Master Node :
+    1. etcd 
+    2. API Server 
+    3. Scheduler
+    4. Controller Manager
+  
+
+2. Worker Node or Slave Node :
+    1. Kubelet
+    2. Kube-Proxy
+    3. Pod
+
