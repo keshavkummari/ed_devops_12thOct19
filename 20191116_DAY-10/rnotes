@@ -1,0 +1,87 @@
+
+
+
+                          WARNING!!!!
+
+ This is a sandbox environment. Using personal credentials
+ is HIGHLY! discouraged. Any consequences of doing so, are
+ completely the user's responsibilites.
+
+ You can bootstrap a cluster as follows:
+
+ 1. Initializes cluster master node:
+
+ kubeadm init --apiserver-advertise-address $(hostname -i)
+
+
+ 2. Initialize cluster networking:
+
+ kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
+
+
+ 3. (Optional) Create an nginx deployment:
+
+ kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
+
+
+You can now join any number of machines by running the following on each node
+as root:
+
+kubeadm join 192.168.0.13:6443 --token b6ucu2.0mfalxnlpq5ic5vr --discovery-token-ca-cert-hash sha256:621986c61c3a8e54f47e73e3a6388fdb688588f43b901f57cf8482367eec1c19
+
+
+echo  "Welcome" >> /tmp/jenkins.txt
+
+
+ubuntu@ip-172-31-24-236:~$ sudo hostnamectl set-hostname "k8s-master.ckk.com"
+ubuntu@ip-172-31-24-236:~$ exec bash
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ hostname 
+k8s-master.ckk.com
+ubuntu@k8s-master:~$ hostname -I
+172.31.24.236 
+ubuntu@k8s-master:~$ # 172.31.24.236 k8s-master.ckk.com
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ sudo vi /etc/hosts
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# Kubernetes Master
+172.31.24.236 k8s-master.ckk.com
+
+# Kuberentes Node1
+172.31.29.104 k8s-node1.ckk.com
+
+# Kubernetes Node2
+172.31.30.54 k8s-node2.ckk.com 
+ubuntu@k8s-master:~$ 
+
+ubuntu@k8s-master:~$ history
+    1  sudo hostnamectl set-hostname "k8s-master.ckk.com"
+    2  exec bash
+    3  hostname 
+    4  hostname -I
+    5  # 172.31.24.236 k8s-master.ckk.com
+    6  sudo vi /etc/hosts
+    7  cat /etc/hosts
+    8  hostname
+    9  sudo apt-get update
+   10  sudo apt-get install vim curl unzip wget elinks git -y
+   11  sudo apt-get install docker.io
+   12  history
+   13  sudo apt-get install apt-transport-https -y
+   14  sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add 
+   15  udo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+   16  sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+   17  sudo apt-get update -y
+   18  sudo apt-get install kubeadm -y
+   

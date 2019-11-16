@@ -1,0 +1,138 @@
+Agenda :
+
+1. Kubernetes
+2. Integration with SonarQube 
+3. Deploy a Code Using Jenkins
+
+Kubernetes Architecture:
+
+1. Master Node :
+    1. etcd 
+    2. API Server 
+    3. Scheduler
+    4. Controller Manager
+
+2. Worker Node or Slave Node :
+    1. Kubelet
+    2. Kube-Proxy
+    3. Pod
+
+
+STEP-1 : Hostname 
+sudo hostnamectl set-hostname "k8s-master.ckk.com"
+172.31.24.236 k8s-master.ckk.com
+sudo vi /etc/hosts
+cat /etc/hosts
+
+STEP-2 : Update the Repo 
+sudo apt-get update
+
+STEP-3 : Install Utility Softwares 
+sudo apt-get install vim curl unzip wget elinks git apt-transport-https -y
+
+STEP-4: Install Container Engine 
+sudo apt-get install docker.io
+
+STEP-5 : Install Kubernetes
+
+# Configure Kubernetes Package Repository on Master and Worker Nodes 
+sudo curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add 
+
+# Add the Repository 
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+# Update the Repository
+sudo apt-get update -y 
+
+# Install Kubeadm on Master and Worker Nodes 
+sudo apt-get install kubeadm -y 
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.24.236:6443 --token rujiys.ghhyetq3jb3o5nc8 \
+    --discovery-token-ca-cert-hash sha256:f575d7988c64b6c694dca21a2ec70c9501d7a9417837a4316519cc47454f168f 
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.24.236:6443 --token rujiys.ghhyetq3jb3o5nc8 \
+    --discovery-token-ca-cert-hash sha256:f575d7988c64b6c694dca21a2ec70c9501d7a9417837a4316519cc47454f168f 
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ sudo systemctl enable docker.service
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ pwd
+/home/ubuntu
+ubuntu@k8s-master:~$ ls -lrta
+total 40
+-rw-r--r-- 1 ubuntu ubuntu  807 Apr  4  2018 .profile
+-rw-r--r-- 1 ubuntu ubuntu 3771 Apr  4  2018 .bashrc
+-rw-r--r-- 1 ubuntu ubuntu  220 Apr  4  2018 .bash_logout
+drwxr-xr-x 3 root   root   4096 Nov 16 02:14 ..
+drwx------ 2 ubuntu ubuntu 4096 Nov 16 02:14 .ssh
+drwx------ 3 ubuntu ubuntu 4096 Nov 16 02:17 .gnupg
+drwx------ 2 ubuntu ubuntu 4096 Nov 16 02:17 .cache
+-rw-r--r-- 1 ubuntu ubuntu    0 Nov 16 02:18 .sudo_as_admin_successful
+-rw------- 1 ubuntu ubuntu   61 Nov 16 02:18 .bash_history
+-rw------- 1 root   root    856 Nov 16 02:19 .viminfo
+drwxr-xr-x 5 ubuntu ubuntu 4096 Nov 16 02:19 .
+ubuntu@k8s-master:~$ mkdir -p $HOME/.kube
+ubuntu@k8s-master:~$ ls -lrta
+total 44
+-rw-r--r-- 1 ubuntu ubuntu  807 Apr  4  2018 .profile
+-rw-r--r-- 1 ubuntu ubuntu 3771 Apr  4  2018 .bashrc
+-rw-r--r-- 1 ubuntu ubuntu  220 Apr  4  2018 .bash_logout
+drwxr-xr-x 3 root   root   4096 Nov 16 02:14 ..
+drwx------ 2 ubuntu ubuntu 4096 Nov 16 02:14 .ssh
+drwx------ 3 ubuntu ubuntu 4096 Nov 16 02:17 .gnupg
+drwx------ 2 ubuntu ubuntu 4096 Nov 16 02:17 .cache
+-rw-r--r-- 1 ubuntu ubuntu    0 Nov 16 02:18 .sudo_as_admin_successful
+-rw------- 1 ubuntu ubuntu   61 Nov 16 02:18 .bash_history
+-rw------- 1 root   root    856 Nov 16 02:19 .viminfo
+drwxrwxr-x 2 ubuntu ubuntu 4096 Nov 16 03:04 .kube
+drwxr-xr-x 6 ubuntu ubuntu 4096 Nov 16 03:04 .
+ubuntu@k8s-master:~$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+ubuntu@k8s-master:~$ ls -lrta .kube/config 
+-rw------- 1 root root 5453 Nov 16 03:06 .kube/config
+ubuntu@k8s-master:~$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+ubuntu@k8s-master:~$ 
+ubuntu@k8s-master:~$ ls -lrta .kube/config 
+-rw------- 1 ubuntu ubuntu 5453 Nov 16 03:06 .kube/config
+ubuntu@k8s-master:~$
+
+Node-1:
+kubeadm join 172.31.24.236:6443 --token rujiys.ghhyetq3jb3o5nc8 --discovery-token-ca-cert-hash sha256:f575d7988c64b6c694dca21a2ec70c9501d7a9417837a4316519cc47454f168f 
+
+Node-2:
+kubeadm join 172.31.24.236:6443 --token rujiys.ghhyetq3jb3o5nc8 --discovery-token-ca-cert-hash sha256:f575d7988c64b6c694dca21a2ec70c9501d7a9417837a4316519cc47454f168f 
+
+
+POD : 
+
+"https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
