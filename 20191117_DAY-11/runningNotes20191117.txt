@@ -1,0 +1,23 @@
+Agenda :
+
+1. DevOps CI/CD Pipeline Integration
+2. Kubernetes Deployment
+
+1. Jenkins
+2. Jfrog
+3. Maven
+4. Maven With JFrog 
+5. Sonarqube
+6. Sonarqube Integration with Maven  
+7. Deploy a War file into Tomcat 
+
+devSecops: 9ed376261fa6b355222da0493a49147e6296b342
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=devSecops \
+  -Dsonar.host.url=http://52.66.139.66:9000 \
+  -Dsonar.login=9ed376261fa6b355222da0493a49147e6296b342
+
+mvn sonar:sonar -Dsonar.projectKey=devSecops -Dsonar.host.url=http://52.66.139.66:9000 -Dsonar.login=9ed376261fa6b355222da0493a49147e6296b342  
+
+
