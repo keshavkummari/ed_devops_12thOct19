@@ -1,0 +1,48 @@
+
+Working on Jenkins Jobs:
+
+STEP-1 : Start all CI/CD Pipeline Servers 
+
+STEP-2 : Go to Code Repo 
+
+STEP-3 : Cross validate the connections of CI/CD Pipeline servers details 
+
+STEP-4 : Execute a Job using Jenkins Terminal 
+
+STEP-5 : Create multiple Jobs part of Jenkins and validate them :
+
+
+
+
+jenkins@jenkins:~$ pwd
+/var/lib/jenkins
+jenkins@jenkins:~$ ls -lrta .ssh/
+total 20
+-rw-r--r--  1 jenkins jenkins  408 Nov 19 16:41 id_rsa.pub
+-rw-------  1 jenkins jenkins 1679 Nov 19 16:41 id_rsa
+drwx------  2 jenkins jenkins 4096 Nov 19 16:43 .
+-rw-r--r--  1 jenkins jenkins 1326 Nov 19 17:44 known_hosts
+drwxr-xr-x 22 jenkins jenkins 4096 Nov 23 02:25 ..
+jenkins@jenkins:~$ 
+jenkins@jenkins:~$ ls -lrta .m2
+total 20
+-rw-rw-r--  1 jenkins jenkins   98 Nov 20 02:07 settings-security.xml
+-rw-rw-r--  1 jenkins jenkins 1590 Nov 20 02:07 settings.xml
+drwxrwxr-x  3 jenkins jenkins 4096 Nov 20 02:07 .
+drwxrwxr-x 34 jenkins jenkins 4096 Nov 22 02:38 repository
+drwxr-xr-x 22 jenkins jenkins 4096 Nov 23 02:25 ..
+jenkins@jenkins:~$ 
+jenkins@jenkins:~$ ls -lrta devops/
+total 56
+drwxrwxr-x  4 jenkins jenkins 4096 Nov 19 16:43 src
+-rw-rw-r--  1 jenkins jenkins 4994 Nov 19 16:43 mvnw.cmd
+-rwxrwxr-x  1 jenkins jenkins 6468 Nov 19 16:43 mvnw
+-rw-rw-r--  1 jenkins jenkins   80 Nov 19 16:43 README.md
+-rw-rw-r--  1 jenkins jenkins  391 Nov 19 17:37 release.properties
+-rw-rw-r--  1 jenkins jenkins   19 Nov 20 02:05 File-abc.txt
+-rw-rw-r--  1 jenkins jenkins 4547 Nov 22 02:16 pom.xml
+-rw-rw-r--  1 jenkins jenkins 1377 Nov 22 02:16 JenkinsFile
+drwxrwxr-x  8 jenkins jenkins 4096 Nov 22 02:16 .git
+drwxrwxr-x  4 jenkins jenkins 4096 Nov 22 02:17 .
+drwxr-xr-x 22 jenkins jenkins 4096 Nov 23 02:25 ..
+

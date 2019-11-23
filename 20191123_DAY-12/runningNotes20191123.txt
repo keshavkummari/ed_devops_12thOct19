@@ -1,0 +1,42 @@
+Agenda:
+
+Recap and Q&A
+
+Ansible :
+
+
+<properties>
+  <sonar.projectKey>kummari_edu</sonar.projectKey>
+  <sonar.organization>edudevops0001</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  <sonar.login>ef34bb0443af3bd90df2a2b424ec9591c797d023</sonar.login>
+</properties>
+
+mvn verify sonar:sonar
+
+
+Putty/Gitbash Notes:
+
+
+Windows : 
+	1. cmd 
+	2. powershell 
+
+Can we do ssh to linux/unix using cmd or powershell 
+
+3rd Party Tools:
+	1. gitbash      	: ssh -i "privatekey.pem" username@ipaddress   
+		1. CMD          : ssh -i "privatekey.pem" username@ipaddress 
+		2. Powershell   : ssh -i "privatekey.pem" username@ipaddress 
+
+
+	2. Putty 
+		hostname/ipaddress : 
+		username:
+		password:
+		port: 
+
+Want to connect AWS EC2 instance : 
+		# chmod 400 privatekey.pem 
+
+		ssh -i "privatekey.pem" username@ipaddress 
